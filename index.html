@@ -1,9 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mock A2 Test</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holiday Day Planning</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+        }
+        label, input {
+            display: block;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e7f7e7;
+            border: 1px solid #d0e7d0;
+            border-radius: 5px;
+        }
+    </style>
 </head>
 <body>
+
+    <div class="container">
+        <h1>Find The Perfect Day</h1>
+
+        <!-- Number Input -->
+        <label for="numberInput">Enter a number:</label>
+        <input type="text" id="numberInput" placeholder="Enter a number">
+
+        <!-- Season Input -->
+        <label for="seasonInput">Enter your favorite season:</label>
+        <input type="text" id="seasonInput" placeholder="Enter a season (summer/winter/spring/autumn)">
+
+        <!-- Submit Button -->
+        <button onclick="processInputs()">Submit</button>
+
+        <!-- Result Section -->
+        <div id="result" class="result"></div>
+    </div>
+
     <script src="script.js"></script>
 </body>
-</html> 
+</html>
