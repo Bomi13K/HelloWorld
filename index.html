@@ -1,411 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday!</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Arial', sans-serif;
-        }
-
-        body {
-            background: linear-gradient(135deg, #ff4081 0%, #fad0c4 100%);
-            color: #01060c;
-            overflow-x: hidden;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            padding: 40px 0;
-            animation: fadeIn 2s ease-in;
-        }
-
-        h1 {
-            font-size: 3.5rem;
-            color: #804a5c;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            font-size: 1.5rem;
-            color: #555;
-            margin-bottom: 30px;
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 30px 0;
-        }
-
-        .photo-frame {
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 10px solid rgb(120, 128, 236);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .photo-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .photo-frame:hover img {
-            transform: scale(1.1);
-        }
-
-        .message {
-            background: rgb(255, 253, 253);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            max-width: 800px;
-            margin: 0 auto 40px;
-            line-height: 1.6;
-            font-size: 1.2rem;
-            text-align: center;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
-        }
-
-        .gallery-item {
-            border-radius: 15px;
-            overflow: hidden;
-            height: 250px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px);
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .wishes {
-            background: rgb(244, 245, 247);
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            margin: 40px 0;
-            text-align: center;
-        }
-
-        .wishes h2 {
-            color: #ff4081;
-            margin-bottom: 20px;
-        }
-
-        .wish-list {
-            list-style: none;
-            text-align: left;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .wish-list li {
-            padding: 10px 0;
-            border-bottom: 1px dashed #eee;
-            font-size: 1.1rem;
-        }
-
-        .wish-list li:last-child {
-            border-bottom: none;
-        }
-
-        .cake-container {
-            text-align: center;
-            margin: 40px 0;
-            position: relative;
-        }
-
-        .cake {
-            width: 200px;
-            height: 100px;
-            background: #5267dd ;
-            border-radius: 50% 50% 0 0;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .cake:before {
-            content: '';
-            position: absolute;
-            width: 220px;
-            height: 20px;
-            background: #ff6b6b;
-            border-radius: 50%;
-            bottom: -10px;
-            left: -10px;
-        }
-
-        .candle {
-            width: 10px;
-            height: 40px;
-            background: #ffd166;
-            margin: 0 auto;
-            position: relative;
-            top: -20px;
-        }
-
-        .flame {
-            width: 15px;
-            height: 30px;
-            background: #ff9e00;
-            border-radius: 50% 50% 20% 20%;
-            margin: 0 auto;
-            position: relative;
-            top: -40px;
-            animation: flicker 1.5s infinite alternate;
-        }
-
-        .balloons {
-            display: flex;
-            justify-content: center;
-            margin: 40px 0;
-            gap: 20px;
-        }
-
-        .balloon {
-            width: 60px;
-            height: 80px;
-            border-radius: 50%;
-            position: relative;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        .balloon:before {
-            content: '';
-            position: absolute;
-            width: 2px;
-            height: 80px;
-            background: #333;
-            bottom: -80px;
-            left: 50%;
-            transform: translateX(-50%);
-        }
-
-        .balloon:nth-child(1) {
-            background: #ff4081;
-            animation-delay: 0s;
-        }
-
-        .balloon:nth-child(2) {
-            background: #3f51b5;
-            animation-delay: 0.5s;
-        }
-
-        .balloon:nth-child(3) {
-            background: #4caf50;
-            animation-delay: 1s;
-        }
-
-        .balloon:nth-child(4) {
-            background: #ff9800;
-            animation-delay: 1.5s;
-        }
-
-        .balloon:nth-child(5) {
-            background: #9c27b0;
-            animation-delay: 2s;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .confetti {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background-color: #f00;
-            opacity: 0.7;
-            animation: confettiFall 5s linear forwards;
-            z-index: 1000;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes flicker {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.1); opacity: 0.8; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        @keyframes confettiFall {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5rem;
-            }
-            
-            .subtitle {
-                font-size: 1.2rem;
-            }
-            
-            .photo-frame {
-                width: 250px;
-                height: 250px;
-            }
-            
-            .gallery {
-                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vivid Vision Graphics</title>
+  
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Happy Birthday!</h1>
-            <p class="subtitle">Wishing the prettiest lady I've ever seen all the happiness and peace in the world on your special day! 
-            </p>
-        </header>
 
-        <section class="hero">
-            <div class="photo-frame">
-                <!-- Replace with your image URL -->
-                <img src="images.jpg/image5.png" alt="prettiest lady on Earth">
-            </div>
-            <div class="message">
-                <p>Hey Dairo,</p>
-                <p>On your special day, I wanted to do something for you seeing that we couldn't go out today. Even though it has not been sunshine and roses, I'm incredibly grateful to have gotten to know you.</p>
-                <p>I hope your birthday is as beautiful as you are, filled with joy, laughter, kindness and all the things that make you happy. And I know you rolled your eyes on "prettiest lady I've ever seen" but frfr, you gorgeous</p>
-                <p>with care and love,</p>
-                <p>Bomi K</p>
-            </div>
-        </section>
+  <header id="header">
+    <a href="#" class="logo">Vivid Vision Graphics</a>
+    <nav>
+      <a href="#home" class="active">Home</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
 
-        <section class="gallery">
-            <!-- Replace with your image URLs -->
-            <div class="gallery-item">
-                <img src="images.jpg/image2.jpg" alt="I enjoy moments with you">
-            </div>
-            <div class="gallery-item">
-                <img src="images.jpg/image3.jpg" alt="low-key my favorite picture of us">
-            </div>
-            <div class="gallery-item">
-                <img src="images.jpg/image1.jpg" alt="we high-key make sense">
-            </div>
-            <div class="gallery-item">
-                <img src="images.jpg/image4.jpg" alt="I think we are pretty cool">
-            </div>
-        </section>
-
-        <section class="wishes">
-            <h2>Birthday Wishes</h2>
-            <ul class="wish-list">
-                <li>May all your dreams come true</li>
-                <li>May you be surrounded by peace and joy</li>
-                <li>May this year (next year I guess) be your best one yet</li>
-                <li>May you achieve everything you set your mind to, even the "impossible" things</li>
-                <li>May you always stay as amazing as you are and grow funnier (stay goofy)</li>
-                <li>Happy unc status</li>
-            </ul>
-        </section>
-
-        <div class="cake-container">
-            <div class="cake">
-                <div class="candle">
-                    <div class="flame"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="balloons">
-            <div class="balloon"></div>
-            <div class="balloon"></div>
-            <div class="balloon"></div>
-            <div class="balloon"></div>
-            <div class="balloon"></div>
-        </div>
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Capturing Moments<br>That Last Forever</h1>
+      <p>Wedding • Maternity • Prom • Studio • Graduation </p>
+      <a href="#portfolio" class="btn">View Work</a>
     </div>
+  </section>
 
-    <footer>
-        <p>Made with ❤️ for your special day</p>
-    </footer>
+  <section id="portfolio">
+    <h2>Selected Work</h2>
+    <div class="gallery">
+      
+      <img src="">
+    </div>
+  </section>
 
-    <script>
-        // Create confetti effect
-        function createConfetti() {
-            const colors = ['#ff4081', '#3f51b5', '#4caf50', '#ff9800', '#9c27b0'];
-            const container = document.body;
-            
-            for (let i = 0; i < 100; i++) {
-                const confetti = document.createElement('div');
-                confetti.className = 'confetti';
-                confetti.style.left = Math.random() * 100 + 'vw';
-                confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                confetti.style.animationDelay = Math.random() * 5 + 's';
-                container.appendChild(confetti);
-                
-                // Remove confetti after animation completes
-                setTimeout(() => {
-                    confetti.remove();
-                }, 5000);
-            }
-        }
-        
-        // Create confetti when page loads
-        window.addEventListener('load', createConfetti);
-        
-        // Create more confetti when clicking anywhere
-        document.addEventListener('click', createConfetti);
-        
-        // Add birthday message with name if provided in URL
-        document.addEventListener('DOMContentLoaded', function() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const name = urlParams.get('name');
-            
-            if (name) {
-                document.querySelector('h1').innerHTML = `Happy Birthday, ${name}!`;
-                
-                // Update the message
-                const messageParagraphs = document.querySelectorAll('.message p');
-                messageParagraphs[0].textContent = `Dear ${name},`;
-            }
+  <section id="about" class="about">
+    <h2>About Me</h2>
+    <p>
+      I'm a Newcastle-based photographer specializing in timeless prom, wedding and graduation photography.<br><br>
+      My goal is simple: to create images that feel honest, emotional and elegant. images you'll treasure for years to come
+    </p>
+  </section>
+
+  
+  <section id="contact" class="contact">
+    <h2>Let's Create Something Beautiful</h2>
+    <form>
+      <input type="text" placeholder="Book Via WhatsApp" required>
+      <input type="number" placeholder="phone number" required>
+      <input type="email" placeholder="your email" required>
+      <textarea rows="6" placeholder="Tell me about your project..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <script>
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
         });
-    </script>
+
+        // Update active link (optional enhancement)
+        document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // Header background change on scroll
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('scrolled', window.scrollY > 100);
+    });
+  </script>
+
 </body>
 </html>
